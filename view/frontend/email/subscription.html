@@ -1,0 +1,35 @@
+<!--@subject {{trans "You have plans expiring in %days Days! " days=$days}} @-->
+<!--@vars {
+"var message_1":"Custom Message 1",
+"var message_2":"Custom Message 2"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-info">
+        <td>
+            <h1>{{trans "You have plans expiring in %days Days! " days=$days}}</h1>
+        </td>
+    </tr>
+</table>
+
+<div class="template-part">
+    <div class="inn-blk">
+        <p>Hi {{var customer_name|raw}},</p>
+        <br>
+        <p>Thanks for using our {{var customer_name|raw}} – we love having you as our customer. Your
+            <b>{{var plan_name|raw}}</b> will expire in {{var days|raw}} days, so we thought we’d check in.
+        </p>
+        <p>If you want to continue taking advantage of <b>{{var subscription|raw}}</b> and retain all your data and
+            preferences, you can easily renew by going to <a href="{{url|raw}}">Click Here </a> .</p>
+        <p>Once your plan expire, they are non-refundable and you will no longer be able to use them.</p>
+        <br>
+        <br>
+        <p>Thank you,</p>
+        <p>{{var customer_name|raw}}</p>
+    </div>
+</div>
+
+
+{{template config_path="design/email/footer_template"}}

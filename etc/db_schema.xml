@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="hcl_subscription_subscription" resource="default" engine="innodb" comment="hcl_subscription_subscription Table">
+		<column xsi:type="int"      name="subscription_id" padding="10" unsigned="false" nullable="false" identity="true" comment="Entity Id" />
+      <column xsi:type="varchar"  name="customer_name" nullable="false" length="250" comment="Customer Namne" />
+      <column xsi:type="varchar"  name="customer_email" nullable="false" length="250" comment="Email Id" />
+      <column xsi:type="varchar"  name="order_increment_id" nullable="false" length="50" comment="Order Increment Id" />
+      <column xsi:type="varchar"  name="order_id" nullable="false" length="50" comment="Order Id" />
+      <column xsi:type="text"     name="product_id" nullable="false" comment="Product Id" />
+      <column xsi:type="text"     name="product_name" nullable="false" comment="Product Namne" />
+      <column xsi:type="varchar"  name="product_amount" nullable="false" length="25" comment="Subscription Product Amount" />
+      <column xsi:type="varchar"  name="state" nullable="false" length="10" comment="State" />
+      <column xsi:type="varchar"  name="status" nullable="false" length="10" comment="Status" />
+      <column xsi:type="varchar"  name="subscription" nullable="false" length="100" comment="Subscription" />
+      <column xsi:type="varchar"  name="duration" nullable="false" length="100" comment="Duration" />
+      <column xsi:type="datetime" name="start_date" nullable="false"  on_update="false"/>
+      <column xsi:type="datetime" name="end_date" nullable="false"  on_update="false"/>
+      <column xsi:type="datetime" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false"/>
+      <column xsi:type="datetime" name="updated_at" nullable="true" default="CURRENT_TIMESTAMP" on_update="true"/>
+      <constraint xsi:type="primary" referenceId="PRIMARY">
+         <column name="subscription_id" />
+      </constraint>
+   </table>
+   <table name="quote">
+      <column name="hcl_subscription" nullable="true" xsi:type="varchar" comment="Hcl Subscription" length="10"/>
+   </table>
+   <table name="quote_item">
+      <column name="hcl_subscription" nullable="true" xsi:type="varchar" comment="Hcl Subscription" length="10"/>
+   </table>
+   <table name="sales_order">
+      <column name="hcl_subscription" nullable="true" xsi:type="varchar" comment="Hcl Subscription" length="10"/>
+   </table>
+   <table name="sales_order_grid">
+      <column name="hcl_subscription" nullable="true" xsi:type="varchar" comment="Hcl Subscription" length="10"/>
+   </table>
+   <table name="sales_order_item">
+      <column name="hcl_subscription" nullable="true" xsi:type="varchar" comment="Hcl Subscription" length="10"/>
+   </table>
+   <table name="catalog_product_option_type_value">
+      <column name="custom_option_hcl_subscription_days" nullable="true" xsi:type="varchar" comment="Hcl Subscription In Days" length="10"/>
+   </table>
+</schema>

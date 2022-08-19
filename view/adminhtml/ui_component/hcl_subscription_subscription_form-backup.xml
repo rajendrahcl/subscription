@@ -1,0 +1,272 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">hcl_subscription_subscription_form.subscription_form_data_source</item>
+		</item>
+		<item name="label" xsi:type="string" translate="true">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button name="back" class="Hcl\Subscription\Block\Adminhtml\Subscription\Edit\BackButton"/>
+			<!-- <button name="delete" class="Hcl\Subscription\Block\Adminhtml\Subscription\Edit\DeleteButton"/> -->
+			<button name="save" class="Hcl\Subscription\Block\Adminhtml\Subscription\Edit\SaveButton"/>
+			<button name="save_and_continue" class="Hcl\Subscription\Block\Adminhtml\Subscription\Edit\SaveAndContinueButton"/>
+		</buttons>
+		<namespace>hcl_subscription_subscription_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>hcl_subscription_subscription_form.subscription_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="subscription_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider name="subscription_form_data_source" class="Hcl\Subscription\Model\Subscription\DataProvider">
+			<settings>
+				<requestFieldName>subscription_id</requestFieldName>
+				<primaryFieldName>subscription_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label>General</label>
+		</settings>
+
+		<field name="customer_name" formElement="input" sortOrder="10">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Subscription</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<placeholder>enter customer name...</placeholder>
+				<label translate="true">Customer Name</label>
+				<dataScope>customer_name</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field name="customer_email" formElement="input" sortOrder="20">
+			<argument name="data" xsi:type="array">
+			    <item name="config" xsi:type="array">
+			          <item name="source" xsi:type="string">Subscription</item>
+			    </item>
+			</argument>
+			<settings>
+			    <dataType>text</dataType>
+			    <placeholder>enter customer email...</placeholder>
+			    <label translate="true">Customer Email</label>
+			    <dataScope>customer_email</dataScope>
+			    <validation>
+			          <rule name="required-entry" xsi:type="boolean">true</rule>
+			    </validation>
+			</settings>
+		</field>
+		<field name="order_id" formElement="input" sortOrder="30">
+			<argument name="data" xsi:type="array">
+			    <item name="config" xsi:type="array">
+			          <item name="source" xsi:type="string">Subscription</item>
+			    </item>
+			</argument>
+			<settings>
+			    <dataType>text</dataType>
+			    <placeholder>enter order id...</placeholder>
+			    <label translate="true">Order Id</label>
+			    <dataScope>order_id</dataScope>
+			    <validation>
+			          <rule name="required-entry" xsi:type="boolean">true</rule>
+			    </validation>
+			</settings>
+		</field>
+		<field name="order_increment_id" formElement="input" sortOrder="35">
+			<argument name="data" xsi:type="array">
+			    <item name="config" xsi:type="array">
+			          <item name="source" xsi:type="string">Subscription</item>
+			    </item>
+			</argument>
+			<settings>
+			    <dataType>text</dataType>
+			    <placeholder>enter order increment id...</placeholder>
+			    <label translate="true">Order Increment Id</label>
+			    <dataScope>order_increment_id</dataScope>
+			    <validation>
+			          <rule name="required-entry" xsi:type="boolean">true</rule>
+			    </validation>
+			</settings>
+		</field>
+
+		<field name="product_name" formElement="input" sortOrder="40">
+			<argument name="data" xsi:type="array">
+			    <item name="config" xsi:type="array">
+			          <item name="source" xsi:type="string">Subscription</item>
+			    </item>
+			</argument>
+			<settings>
+			    <dataType>text</dataType>
+			    <placeholder>enter product name...</placeholder>
+			    <label translate="true">Product Name</label>
+			    <dataScope>product_name</dataScope>
+			    <validation>
+			          <rule name="required-entry" xsi:type="boolean">true</rule>
+			    </validation>
+			</settings>
+		</field>
+		<!-- <field name="product_amount" formElement="input" sortOrder="50">
+			<argument name="data" xsi:type="array">
+			    <item name="config" xsi:type="array">
+			          <item name="source" xsi:type="string">Subscription</item>
+			    </item>
+			</argument>
+			<settings>
+			    <dataType>text</dataType>
+			    <placeholder>enter product amount...</placeholder>
+			    <label translate="true">Product Amount</label>
+			    <dataScope>product_amount</dataScope>
+			    <validation>
+			          <rule name="required-entry" xsi:type="boolean">true</rule>
+			    </validation>
+			</settings>
+		</field> -->
+		<field name="state" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">State</label>
+                <dataScope>state</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Hcl\Subscription\Model\Source\State"/>
+                        <caption translate="true">-- Please Select --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="status" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+                <dataScope>status</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Hcl\Subscription\Model\Source\Status"/>
+                        <caption translate="true">-- Please Select --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+		<field name="subscription" formElement="input" sortOrder="80">
+			<argument name="data" xsi:type="array">
+			    <item name="config" xsi:type="array">
+			          <item name="source" xsi:type="string">Subscription</item>
+			    </item>
+			</argument>
+			<settings>
+			    <dataType>text</dataType>
+			    <placeholder>enter subscription...</placeholder>
+			    <label translate="true">Subscription</label>
+			    <dataScope>subscription</dataScope>
+			    <validation>
+			          <rule name="required-entry" xsi:type="boolean">false</rule>
+			    </validation>
+			</settings>
+		</field>
+		<field name="duration" formElement="input" sortOrder="90">
+			<argument name="data" xsi:type="array">
+			    <item name="config" xsi:type="array">
+			          <item name="source" xsi:type="string">Subscription</item>
+			    </item>
+			</argument>
+			<settings>
+			    <dataType>text</dataType>
+			    <placeholder>enter duration...</placeholder>
+			    <label translate="true">Duration</label>
+			    <dataScope>duration</dataScope>
+			    <validation>
+			          <rule name="required-entry" xsi:type="boolean">false</rule>
+			    </validation>
+			</settings>
+		</field>
+		<field name="start_date" formElement="date" sortOrder="100">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Subscription</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <placeholder>enter start date...</placeholder>
+                <label translate="true">Start Date</label>
+                <visible>true</visible>
+                <dataScope>start_date</dataScope>
+            </settings>
+        </field>
+		<field name="end_date" formElement="date" sortOrder="110">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Subscription</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <placeholder>enter end date...</placeholder>
+                <dataType>text</dataType>
+                <label translate="true">End Date</label>
+                <visible>true</visible>
+                <dataScope>end_date</dataScope>
+            </settings>
+        </field>
+		<field name="created_at" formElement="date" sortOrder="120">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Subscription</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <placeholder>enter created date...</placeholder>
+                <label translate="true">Created At</label>
+                <visible>true</visible>
+                <dataScope>created_at</dataScope>
+            </settings>
+        </field>
+		<field name="updated_at" formElement="date" sortOrder="130">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Subscription</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <placeholder>enter updated date...</placeholder>
+                <label translate="true">Updated At</label>
+                <visible>true</visible>
+                <dataScope>updated_at</dataScope>
+            </settings>
+        </field>
+	</fieldset>
+</form>

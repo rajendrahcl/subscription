@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="sales_order_columns">
+         <column name="hcl_subscription" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <filter>select</filter>
+                <options class="Hcl\Subscription\Model\Source\Subscription"/>
+                <dataType>select</dataType>
+                <label translate="true">Hcl Subscription</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        
+    </columns>
+</listing>

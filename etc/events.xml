@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    
+    <!-- set subscription attribute data in quote_items -->
+    <event name="sales_quote_item_set_product">
+        <observer name="set_item_custom_attribute" instance="Hcl\Subscription\Observer\SetItemCustomAttribute" />
+    </event>
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="hcl_checkout_onepage_controller_success_action" instance="Hcl\Subscription\Observer\OrderObserver" />
+    </event>
+    
+    <!-- Set subscription attribute value in quote -->
+    <event name="sales_quote_address_collect_totals_before">
+        <observer name="hcl_sales_quote_address_collect_totals_before" instance="Hcl\Subscription\Observer\SalesQuoteCollectTotals" />
+    </event>
+    <event name="controller_action_postdispatch_checkout_index_index">
+        <observer name="hcl_controller_action_postdispatch" instance="Hcl\Subscription\Observer\CheckoutIndexActionObserver" />
+    </event>
+
+    <!-- set quote attribute data in sales -->
+    <event name="sales_model_service_quote_submit_before">
+        <observer name="hcl_subscription_code_order_place_before_action" instance="Hcl\Subscription\Observer\PlaceOrder"/>
+    </event>
+
+    <!-- Change order status -->
+    <event name="sales_order_save_after">
+        <observer name="hcl_subscription_sales_order_save_after" instance="Hcl\Subscription\Observer\OrderSaveAfter" />
+    </event>
+</config>

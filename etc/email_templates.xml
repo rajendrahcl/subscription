@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="hcl_subscription_general_template" label="Subscription Email Template" file="subscription.html" type="html" module="Hcl_Subscription" area="frontend"/>
+	<template id="hcl_subscription_general_neworder" label="New Subscription Email Template" file="subscription_new.html" type="html" module="Hcl_Subscription" area="frontend"/>
+</config>		

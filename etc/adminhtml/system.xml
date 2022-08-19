@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="hcl" translate="label" sortOrder="999">
+			<label>HCL</label>
+		</tab>
+		<section id="hcl_subscription" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+			<label>Hcl Subscription</label>
+			<tab>hcl</tab>
+			<resource>Hcl_Subscription::config_hcl_subscription</resource>
+			<group id="general" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+				<label>Hcl Subscription</label>
+				<field id="enable" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Module Enable	</label>
+					<comment>Select 'Yes' to Enable Module</comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="subscription_email" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+	                <label>Subscription Send Emails To:- </label>
+	                <validate>required-entry validate-email</validate>
+	                <comment>Set default sender email, Example "admin@gmail.com".</comment>
+	            </field>
+	            <field id="subscription_customer" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+	                <label>Subscription Email Sender Name:- </label>
+	                <validate>required-entry</validate>
+	                <comment>Set default email sender name, Example "Admin Subscription".</comment>
+	            </field>
+				<field id="template" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Subscription Email Template</label>
+                    <comment>Email template chosen based on theme fallback when "Default" option is selected.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+			</group>
+		</section>
+	</system>
+</config>

@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Hcl\Subscription\Api\SubscriptionRepositoryInterface" type="Hcl\Subscription\Model\SubscriptionRepository"/>
+	<preference for="Hcl\Subscription\Api\Data\SubscriptionInterface" type="Hcl\Subscription\Model\Subscription"/>
+	<preference for="Hcl\Subscription\Api\Data\SubscriptionSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Hcl\Subscription\Model\ResourceModel\Subscription\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">hcl_subscription_subscription</argument>
+			<argument name="resourceModel" xsi:type="string">Hcl\Subscription\Model\ResourceModel\Subscription\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="hcl_subscription_subscription_listing_data_source" xsi:type="string">Hcl\Subscription\Model\ResourceModel\Subscription\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="hcl_subscription" xsi:type="string">sales_order.hcl_subscription</item>
+            </argument>
+        </arguments>
+    </virtualType>
+	
+	<type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="hcl_subscription_quote_to_order_item" type="Hcl\Subscription\Plugin\CustomAttributeQuoteToOrderItem"/>
+    </type>
+</config>

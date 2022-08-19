@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Hcl_Subscription::top_level" title="Hcl Subscription" module="Hcl_Subscription" sortOrder="100" resource="Hcl_Subscription::top_level"/>
+		<add id="Hcl_Subscription::hcl_subscription_subscription" title="Hcl Subscription" module="Hcl_Subscription" sortOrder="9999" resource="Magento_Backend::content" parent="Hcl_Subscription::top_level" action="hcl_subscription/subscription/index"/>
+	</menu>
+</config>

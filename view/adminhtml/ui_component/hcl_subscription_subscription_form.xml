@@ -1,0 +1,187 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">hcl_subscription_subscription_form.subscription_form_data_source</item>
+		</item>
+		<item name="label" xsi:type="string" translate="true">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button name="back" class="Hcl\Subscription\Block\Adminhtml\Subscription\Edit\BackButton"/>
+			<!-- <button name="delete" class="Hcl\Subscription\Block\Adminhtml\Subscription\Edit\DeleteButton"/> -->
+			<button name="save" class="Hcl\Subscription\Block\Adminhtml\Subscription\Edit\SaveButton"/>
+			<button name="save_and_continue" class="Hcl\Subscription\Block\Adminhtml\Subscription\Edit\SaveAndContinueButton"/>
+		</buttons>
+		<namespace>hcl_subscription_subscription_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>hcl_subscription_subscription_form.subscription_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="subscription_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider name="subscription_form_data_source" class="Hcl\Subscription\Model\Subscription\DataProvider">
+			<settings>
+				<requestFieldName>subscription_id</requestFieldName>
+				<primaryFieldName>subscription_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label>Hcl Subscription</label>
+		</settings>
+		<field formElement="input" name="customer_name">
+	    	<settings>
+		        <label translate="true">Customer Name</label>
+		        <dataScope>customer_name</dataScope>
+		        <elementTmpl>ui/form/element/text</elementTmpl>
+	    	</settings>
+		</field>
+		<field formElement="input" name="customer_email">
+	    	<settings>
+		        <label translate="true">Customer Email</label>
+		        <dataScope>customer_email</dataScope>
+		        <elementTmpl>ui/form/element/text</elementTmpl>
+	    	</settings>
+		</field>
+		<!-- <field formElement="input" name="order_id">
+	    	<settings>
+		        <label translate="true">Order Id</label>
+		        <dataScope>order_id</dataScope>
+		        <elementTmpl>ui/form/element/text</elementTmpl>
+	    	</settings>
+		</field> -->
+		<field formElement="input" name="order_increment_id">
+	    	<settings>
+		        <label translate="true">Order Increment Id</label>
+		        <dataScope>order_increment_id</dataScope>
+		        <elementTmpl>ui/form/element/text</elementTmpl>
+	    	</settings>
+		</field>
+		<field formElement="input" name="product_name">
+	    	<settings>
+		        <label translate="true">Product Name</label>
+		        <dataScope>product_name</dataScope>
+		        <elementTmpl>ui/form/element/text</elementTmpl>
+	    	</settings>
+		</field>
+		<!-- <field name="product_amount" formElement="input" sortOrder="50">
+			<argument name="data" xsi:type="array">
+			    <item name="config" xsi:type="array">
+			          <item name="source" xsi:type="string">Subscription</item>
+			    </item>
+			</argument>
+			<settings>
+			    <dataType>text</dataType>
+			    <placeholder>enter product amount...</placeholder>
+			    <label translate="true">Product Amount</label>
+			    <dataScope>product_amount</dataScope>
+			    <validation>
+			          <rule name="required-entry" xsi:type="boolean">true</rule>
+			    </validation>
+			</settings>
+		</field>  -->
+		<field name="state" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">State</label>
+                <dataScope>state</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Hcl\Subscription\Model\Source\State"/>
+                        <caption translate="true"> --Please Select-- </caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="status" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+                <dataScope>status</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Hcl\Subscription\Model\Source\Status"/>
+                        <caption translate="true">-- Please Select --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+		<field formElement="input" name="subscription">
+	    	<settings>
+		        <label translate="true">Subscription</label>
+		        <dataScope>subscription</dataScope>
+		        <elementTmpl>ui/form/element/text</elementTmpl>
+	    	</settings>
+		</field>
+		<field formElement="input" name="duration">
+	    	<settings>
+		        <label translate="true">Duration</label>
+		        <dataScope>duration</dataScope>
+		        <elementTmpl>ui/form/element/text</elementTmpl>
+	    	</settings>
+		</field>
+		<field name="start_date" formElement="date" sortOrder="100">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Subscription</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <placeholder>enter start date...</placeholder>
+                <label translate="true">Start Date</label>
+                <visible>true</visible>
+                <dataScope>start_date</dataScope>
+            </settings>
+        </field>
+		<field name="end_date" formElement="date" sortOrder="110">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Subscription</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <placeholder>enter end date...</placeholder>
+                <dataType>text</dataType>
+                <label translate="true">End Date</label>
+                <visible>true</visible>
+                <dataScope>end_date</dataScope>
+            </settings>
+        </field>
+        <field formElement="input" name="created_at">
+	    	<settings>
+		        <label translate="true">Created At</label>
+		        <dataScope>created_at</dataScope>
+		        <elementTmpl>ui/form/element/text</elementTmpl>
+	    	</settings>
+		</field>
+		<field formElement="input" name="updated_at">
+	    	<settings>
+		        <label translate="true">Updated At</label>
+		        <dataScope>updated_at</dataScope>
+		        <elementTmpl>ui/form/element/text</elementTmpl>
+	    	</settings>
+		</field>
+	</fieldset>
+</form>

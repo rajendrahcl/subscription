@@ -1,0 +1,39 @@
+<!--@subject {{trans "Welcome to Avaya,  %customer_name! " customer_name=$customer_name}} @-->
+<!--@vars {
+"var message_1":"Custom Message 1",
+"var message_2":"Custom Message 2"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-info">
+        <td>
+            <h1>
+                <center>{{trans "Thanks for joining Avaya"}}</center>
+            </h1>
+        </td>
+    </tr>
+</table>
+
+<div class="template-part">
+    <div class="inn-blk">
+        <p>Hi {{var customer_name|raw}},</p>
+        <br>
+        <p>You're all set to start Our Plan from Avaya.</p>
+        <br>
+        <p><b>Account Information:</b></p>
+        <p>Email:</p>
+        <p><b>{{var email|raw}}</b></p>
+        <p>Subscription:</p>
+        <p><b>{{var subscription|raw}}</b></p>
+        <p>Plan:</p>
+        <p><b>{{var plan_name|raw}}</b></p><br>
+        <p>Thanks for using our subscription – we love having you as our customer.</p><br>
+        <p><b>- Your friends at Avaya.</b></p>
+        <br>
+    </div>
+</div>
+
+
+{{template config_path="design/email/footer_template"}}
